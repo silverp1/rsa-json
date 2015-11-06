@@ -13,7 +13,7 @@ module.exports = function (opts, cb) {
     var tmpFile = '/tmp/' + n.toString(16);
     var bits = opts.bits || 5000 + Math.floor(Math.random() * 100);
     
-    var args = [ '-f', tmpFile, '-b', bits, '-N', '', '-q', '-t', 'rsa' ];
+    var args = [ '-f', tmpFile, '-b', bits, '-N', opts.passphrase || '', '-q', '-t', 'rsa' ];
     var ps = spawn('ssh-keygen', args);
     
     ps.on('exit', function (code) {
